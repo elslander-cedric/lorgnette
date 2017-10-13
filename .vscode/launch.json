@@ -2,26 +2,11 @@
     "version": "0.2.0",
     "configurations": [
       {
+        "name": "Launch localhost",
         "type": "chrome",
         "request": "launch",
-        "name": "Launch Chrome",
-        "url": "http://localhost:4200",
-        "webRoot": "${workspaceRoot}",
-        "sourceMaps": true,
-        "userDataDir": "${workspaceRoot}/.vscode/chrome",
-        "runtimeArgs": [
-          "--disable-session-crashed-bubble",
-          "--remote-debugging-port=9222"
-        ]
-      },
-      {
-        "name": "Attach Chrome",
-        "type": "chrome",
-        "request": "attach",
-        "url": "http://localhost:4200",
-        "port": 9222,
-        "webRoot": "${workspaceRoot}",
-        "sourceMaps": true
+        "url": "http://localhost:4200/",
+        "webRoot": "${workspaceRoot}/src"
       }
     ]
   }

@@ -1,0 +1,11 @@
+<video #video
+    class="video"
+    [hidden]="captureMode !== 'video'"
+    (load)="captureFromCamera()">
+</video>
+
+<img #img 
+    [ngClass]="['image']"
+    src="assets/barcode.gif"
+    [hidden]="captureMode !== 'image'"
+    (load)="captureFromImage()"/>

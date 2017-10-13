@@ -38,11 +38,7 @@ export class BarCodeDecoder {
         video.width = video.width || video.videoWidth;
         video.height = video.height || video.videoHeight;
 
-        console.log("scan video");
-
         return new Observable((subscriber : Subscriber<string>) => {
-            console.log("new observer");
-            
             setInterval(() => {
                 let barcode = this.scan(video);
                 
@@ -61,8 +57,6 @@ export class BarCodeDecoder {
     }
 
     private scan(media : HTMLImageElement | HTMLVideoElement) : string {
-        console.log("scan ...");
-
         this.canvas.width = media.width;
         this.canvas.height = media.height;
 
@@ -70,7 +64,7 @@ export class BarCodeDecoder {
 
         this.context.drawImage(media, 0, 0);
         
-        [1, 9, 2, 8, 3, 7, 4, 6, 5].every((position : number) => { 
+        [1, 9, 2, 8, 3, 7, 4, 6, 5].every((position : number) => {
             let imageData : ImageData = 
                 this.context.getImageData(0, 
                     Math.ceil(media.height/position), media.width, 1);
@@ -132,7 +126,7 @@ export class BarCodeDecoder {
             if(buffer[position] < 0) valid = false;
         });
 
-        // the whites stripes (not the band)
+        // the whites stripes (not the band :p)
         [0,2,28,30,32,58,60].forEach((position : number) => {
             if(buffer[position] > 0) valid = false;
         });
@@ -163,7 +157,7 @@ export class BarCodeDecoder {
 
             barcode = (BarCodeDecoder.EAN13_PREFIX[ean13Prefix] || 'X') + barcode;
             
-            console.log('barcode candidate: ', barcode);
+            console.log('barcode decoder - candidate: ', barcode);
 
             return barcode.indexOf('X') === -1 ? barcode : null;
         } catch(error) {

@@ -1,0 +1,15 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{ book.title }} ({{ book.isbn }})</mat-card-title>
+        <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
+        <img mat-card-avatar src="{{ book?.cover }}">
+    </mat-card-header>
+
+    <mat-card-content>{{ book?.description }}</mat-card-content>
+    <mat-card-footer>({{ book?.rating }}/5)</mat-card-footer>
+
+    <mat-card-actions>
+        <button mat-raised-button color='primary' (click)="add.emit(book)">Add</button>
+        <button mat-raised-button color='warn' (click)="remove.emit(book)">Remove</button>
+    </mat-card-actions>
+</mat-card>

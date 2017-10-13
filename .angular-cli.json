@@ -18,12 +18,14 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
+      "prefix": "lorgnette",
       "serviceWorker": true,
       "styles": [
-        "styles.css"
+        "lorgnette-theme.scss"
+      ],      
+      "scripts": [
+        "../node_modules/hammerjs/hammer.min.js"
       ],
-      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

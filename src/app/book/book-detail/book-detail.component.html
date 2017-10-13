@@ -1,0 +1,12 @@
+<div [ngClass]="'book'" *ngIf="book" fxLayout="column">
+    <div fxFlex="50%" fxLayout="row">
+        <img mat-card-md-image [src]="book?.cover"/>
+        <div fxLayout="column">
+            <div [ngClass]="'title'">{{ book.title}}</div>
+            <div [ngClass]="'author'">{{ book.author }}</div>
+            <div [ngClass]="'rating'">{{ book?.rating}}</div>
+        </div>
+    </div>
+
+    <div fxFlex="50%" [ngClass]="'description'" [innerHTML]="book.description"></div>
+</div>

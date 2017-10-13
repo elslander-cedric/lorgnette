@@ -1,13 +1,10 @@
 .video {
     height: 50%;    
     width: 100%;
+    transform: scale(1);
+    overflow: hidden;
 }
 
 .image {
-    border: 3px solid #4F4FB3;
     width: 100%;    
-}
-
-.barcode {
-    padding: 5% 5% 5% 5%;
 }
