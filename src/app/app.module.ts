@@ -1,48 +1,42 @@
-import { DashboardModule } from './dashboard/dashboard.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginModule } from './login/login.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { BookCardListComponent } from './book/book-card-list/book-card-list.component';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { PushNotificationsModule } from 'angular2-notifications';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 import { MaterialModule } from './material.module';
-import { ReduxModule } from './redux.module';
-import { BookModule } from './book/book.module';
-import { RoutingModule } from './routing.module';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppStoreModule } from './app-store.module';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { Config } from './config';
 import { AppComponent } from './app.component';
-import { ScannerComponent } from './scanner/scanner.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ScannerComponent,
-    DashboardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ServiceWorkerModule,
-    PushNotificationsModule,
+    SimpleNotificationsModule,
     HttpModule,
     FlexLayoutModule,
+    NgbModule.forRoot(),
     MaterialModule,
-    ReduxModule, 
     RouterModule,
-    BookModule,
-    LoginModule,
+    AppStoreModule,
     DashboardModule,
-    RoutingModule
+    AppRoutingModule
   ],
   exports: [
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgbModule
   ],
   providers: [
     { 

@@ -31,7 +31,7 @@ export class GoodreadsService {
                                 title: item.best_book[0].title[0],
                                 author: item.best_book[0].author[0].name[0],
                                 rating: item.average_rating[0],
-                                cover: item.best_book[0].image_url[0]
+                                cover: item.best_book[0].small_image_url[0]
                             } as Book
                         });
 
@@ -62,9 +62,9 @@ export class GoodreadsService {
                             description: json.GoodreadsResponse.book[0].description[0],
                             author: json.GoodreadsResponse.book[0].authors[0].author[0].name[0],
                             rating: json.GoodreadsResponse.book[0].average_rating[0],
-                            cover: json.GoodreadsResponse.book[0].image_url[0]
+                            cover: json.GoodreadsResponse.book[0].small_image_url[0]
                         } as Book
-
+                        
                         observer.next(book);
                         observer.complete();
                     } else {

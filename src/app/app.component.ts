@@ -6,15 +6,24 @@ import { Store } from '@ngrx/store';
 import { Config } from './config';
 import { Book } from './book/book';
 import { BookStore } from './book/book-store';
-import { ScannerComponent } from './scanner/scanner.component';
-import { GoodreadsService } from './goodreads.service';
-import { BookAction } from './book/book-action';
 import { MatIconRegistry } from '@angular/material';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  template: `
+    <router-outlet></router-outlet>
+  `,
+  styles: [`
+    body {
+        font-family: Roboto, Arial, sans-serif;
+        margin: 0;
+    }
+
+    html, body {
+        height: 100%;
+        width: 100%
+    }
+  `],
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit, AfterViewInit {
@@ -23,8 +32,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   public book: Observable<Book>;
   
   constructor(
-    private config: Config,    
-    private goodreads : GoodreadsService,
+    private config: Config,
     private store: Store<BookStore>,
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer) {
@@ -47,15 +55,17 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
     */
 
-    this.books = this.goodreads.toRead(this.config.goodreadsUID);
+    // this.books = this.goodreads.toRead(this.config.goodreadsUID);
   }
 
+  /*
   private lookupISBN(isbn : string) : Observable<Book> {
-    return this.goodreads.getDetails(isbn);
+     return this.goodreads.getDetails(isbn);
   }
-
+  */
+  
   private addBook(book : Book) : void{
-    this.store.dispatch
-      (new BookAction(BookAction.ADD_BOOK, book));
+    // this.store.dispatch
+    //   (new BookAction(BookAction.ADD_BOOK, book));
   }
 }

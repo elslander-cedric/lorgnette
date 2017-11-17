@@ -1,36 +1,43 @@
-import { utils } from 'protractor/built';
-import { ScannerComponent } from '../scanner/scanner.component';
-import { Book } from '../book/book';
-import { Observable } from 'rxjs/Rx';
-import { GoodreadsService } from '../goodreads.service';
-import { ActivatedRoute, NavigationExtras, ParamMap, Params, Router } from '@angular/router';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'lorgnette-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  template: `
+    <router-outlet name="header"></router-outlet>
+    <router-outlet ></router-outlet>
+    <router-outlet name="footer"></router-outlet>
+  `,
+  styles: [`
+    lorgnette-dashboard {
+        height: 100%;    
+        display: flex;
+        flex-flow: column;
+    }
+
+    lorgnette-header-toolbar, lorgnette-footer-toolbar {
+        display: flex;
+        flex: 0 0 auto;
+    }
+
+    lorgnette-scanner {
+        display: flex;
+        flex: 1 1 auto;
+    }    
+  `],
+  encapsulation: ViewEncapsulation.None
 })
 export class DashboardComponent implements OnInit {
 
-  public title: string = 'Lorgnette';
+    constructor(
+      private router: Router,
+      private route: ActivatedRoute) {
+      console.log("routes known to dashboard module:", this.router.config);
+    }
 
-  @ViewChild(ScannerComponent)
-  public scanner : ScannerComponent;
-  
-  public book: Observable<Book>;
+  ngOnInit() {}
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private goodreads: GoodreadsService) { }
-
-  ngOnInit() {    
-    this.book = this.scanner.barcode.switchMap((barcode: string) =>
-      this.goodreads.getDetails(barcode));
-  }
-
-  private booksToRead(book: Book) : void {
-    this.router.navigate(['/books-to-read/', { isbn: book.isbn }]);
+  private shelve() : void {
+    this.router.navigate(['shelve', { relativeTo: this.route }]);
   }
 }

@@ -23,21 +23,21 @@ export class GoodreadsMockService {
             author: "Robin Hobb",
             title: "Assassin's Quest (Farseer Trilogy, #3)",
             description: `From an extraordinary new voice in fantasy comes the stunning 
-            conclusion to the Farseer trilogy, as FitzChivalry confronts his destiny as
-             the catalyst who holds the fate of the kingdom of the Six Duchies...and the 
-             world itself.<br /><br />King Shrewd is dead at the hands of his son Regal. 
-             As is Fitz--or so his enemies and friends believe. But with the help of his 
-             allies and his beast magic, he emerges from the grave, deeply scarred in body 
-             and soul. The kingdom also teeters toward ruin: Regal has plundered and 
-             abandoned the capital, while the rightful heir, Prince Verity, is lost to
-              his mad quest--perhaps to death. Only Verity's return--or the heir his 
-              princess carries--can save the Six Duchies.<br /><br />But Fitz will not wait. 
-              Driven by loss and bitter memories, he undertakes a quest: to kill Regal. 
-              The journey casts him into deep waters, as he discovers wild 
-            currents of magic within him--currents that will either drown him or
-             make him something more than he was.`,
+                conclusion to the Farseer trilogy, as FitzChivalry confronts his destiny as
+                 the catalyst who holds the fate of the kingdom of the Six Duchies...and the 
+                 world itself.<br /><br />King Shrewd is dead at the hands of his son Regal. 
+                 As is Fitz--or so his enemies and friends believe. But with the help of his 
+                 allies and his beast magic, he emerges from the grave, deeply scarred in body 
+                 and soul. The kingdom also teeters toward ruin: Regal has plundered and 
+                 abandoned the capital, while the rightful heir, Prince Verity, is lost to
+                  his mad quest--perhaps to death. Only Verity's return--or the heir his 
+                  princess carries--can save the Six Duchies.<br /><br />But Fitz will not wait. 
+                  Driven by loss and bitter memories, he undertakes a quest: to kill Regal. 
+                  The journey casts him into deep waters, as he discovers wild 
+                currents of magic within him--currents that will either drown him or
+                 make him something more than he was.`,
             isbn: "9780006480112",
-            cover: "https://images.gr-assets.com/books/1327864896m/68493.jpg",
+            cover: "https://images.gr-assets.com/books/1327864896s/68493.jpg",
             rating: 4.18
         } as Book);
     }
@@ -47,7 +47,19 @@ export class GoodreadsMockService {
             author: "Robin Hobb",
             title: "Assassin's Quest (Farseer Trilogy, #3)",
             isbn: "9780006480112",
-            cover: "https://images.gr-assets.com/books/1327864896m/68493.jpg",
+            cover: "https://images.gr-assets.com/books/1327864896s/68493.jpg",
+            rating: 4.18
+        },{
+            author: "Robin Hobb",
+            title: "Assassin's Quest (Farseer Trilogy, #3)",
+            isbn: "9780006480112",
+            cover: "https://images.gr-assets.com/books/1327864896s/68493.jpg",
+            rating: 4.18
+        },{
+            author: "Robin Hobb",
+            title: "Assassin's Quest (Farseer Trilogy, #3)",
+            isbn: "9780006480112",
+            cover: "https://images.gr-assets.com/books/1327864896s/68493.jpg",
             rating: 4.18
         }] as Book[]);
     }

@@ -1,8 +1,0 @@
-<div *ngIf="books | async as books">
-  <lorgnette-book-card 
-    *ngFor="let book of books"
-    [book]="book"
-    (remove)="removeBook($event)"
-    [book-card-selected]="(selectedBook | async) === book.isbn">
-  </lorgnette-book-card>
-</div>

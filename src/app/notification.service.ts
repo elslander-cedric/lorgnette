@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptionsArgs } from '@angular/http';
-import { NgServiceWorker, NgPushRegistration } from '@angular/service-worker';
-import { PushOptions } from "@angular/service-worker/companion/comm";
-import { PushNotification, PushNotificationsService, Notification } from "angular2-notifications";
+import { SwPush, SwUpdate } from '@angular/service-worker';
+import { Notification } from "angular2-notifications";
 
 import 'rxjs/add/operator/toPromise';
-
+/*
 @Injectable()
 export class NotificationService {
   
-  private registration : NgPushRegistration;
+  private registration : PushRegistration;
 
   constructor(
     private http: Http,
-    private sw: NgServiceWorker, 
+    private sw: ServiceWorker, 
     private pnService: PushNotificationsService) { }
 
   public init() : void {
@@ -27,7 +26,7 @@ export class NotificationService {
   }
 
   public register() : void {
-    let options : PushOptions = {
+    let options : PushSubscriptionOptionsInit = {
       applicationServerKey: //this.urlBase64ToUint8Array(
         'BEbzsJrblsB9rF4Jx8SD-bO3768-w2t0Oa0vRZ5fqmhgiX6Mx8P5qjYMU5OBtq3fiWiane0trsDiNPFxfPUdhx8'
       //)
@@ -120,3 +119,4 @@ export class NotificationService {
     return outputArray;
   }
 }
+*/
