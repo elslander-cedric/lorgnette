@@ -20,7 +20,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
         flex: 0 0 auto;
     }
 
-    lorgnette-scanner {
+    lorgnette-scanner, lorgnette-login-oauth {
         display: flex;
         flex: 1 1 auto;
     }    

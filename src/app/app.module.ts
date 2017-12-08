@@ -1,3 +1,6 @@
+import { LibraryComponent } from './library/library.component';
+import { BookSearchComponent } from './book-search/book-search.component';
+import { BookFilterPipe } from './book-filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -6,24 +9,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { SimpleNotificationsModule } from 'angular2-notifications';
-import { MaterialModule } from './material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppStoreModule } from './app-store.module';
 import { AppRoutingModule } from './app-routing.module';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { Config } from './config';
 import { AppComponent } from './app.component';
+import { Config } from './config';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { MaterialModule } from './material.module';
+import { environment } from '../environments/environment';
+import { NotificationService } from '@oo/notification.service';
+import { LoginOauthComponent } from '@oo/login-oauth/login-oauth.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BookFilterPipe,
+    BookSearchComponent,
+    LibraryComponent,
+    LoginOauthComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    ServiceWorkerModule,
-    SimpleNotificationsModule,
+    BrowserAnimationsModule,    
+    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
     HttpModule,
     FlexLayoutModule,
     NgbModule.forRoot(),
@@ -39,7 +48,8 @@ import { AppComponent } from './app.component';
     NgbModule
   ],
   providers: [
-    { 
+    environment.production ? NotificationService : [],
+    {
       provide: Config,
       useValue: {
         captureMode: 'image',
@@ -48,6 +58,6 @@ import { AppComponent } from './app.component';
       } as Config
     }
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

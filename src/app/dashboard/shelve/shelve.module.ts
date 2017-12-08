@@ -1,3 +1,4 @@
+import { environment } from '../../../environments/environment';
 import { ShelveResolver } from './shelve-resolver.service';
 import { GoodreadsMockService } from '@oo/goodreads-mock.service';
 import { GoodreadsService } from '@oo/goodreads.service';
@@ -6,7 +7,7 @@ import { MaterialModule } from '@oo/material.module';
 import { ShelveComponent } from './shelve.component';
 import { BookCardSelectedDirective } from './book-card-selected.directive';
 import { ShelveRoutingModule } from './shelve-routing.module';
-import { NgModule, Renderer, isDevMode } from '@angular/core';
+import { NgModule, Renderer } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
@@ -34,7 +35,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     providers: [
         {            
             provide: GoodreadsService,
-            useClass: isDevMode ? GoodreadsMockService : GoodreadsService
+            useClass: environment.production ? GoodreadsMockService : GoodreadsService
         }
     ],
 })

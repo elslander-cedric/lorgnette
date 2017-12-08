@@ -8,6 +8,8 @@
     "start-prod": "ng serve --prod --host=0.0.0.0 --proxy-config .angular-proxy-conf.json",
     "start-ssl": "ng serve --ssl true --disable-host-check --host=0.0.0.0 --proxy-config .angular-proxy-conf.json",
     "start-prod2": "ng serve --ssl true --ssl-key ssl/key.pem --ssl-cert ssl/certificate.pem --host=0.0.0.0 --disable-host-check --proxy-config .angular-proxy-conf.json --prod",
+    "auto-deploy": "nodemon --watch 'src' -e ts --exec 'ng build && cp -r dist/* ../lorgnette-server/dist/'",
+    "auto-deploy-prod": "nodemon --watch 'src' -e ts --exec 'ng build --prod && cp -r dist/* ../lorgnette-server/dist/'",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -27,9 +29,9 @@
     "@angular/platform-browser": "^5.0.2",
     "@angular/platform-browser-dynamic": "^5.0.2",
     "@angular/router": "^5.0.2",
+    "@angular/service-worker": "^5.0.2",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.5",
     "@ngrx/store": "^4.1.1",
-    "angular2-notifications": "^0.9.6",
     "core-js": "^2.4.1",
     "hammerjs": "^2.0.8",
     "rxjs": "^5.5.2",
@@ -37,7 +39,7 @@
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
-    "@angular/cli": "1.5.2",
+    "@angular/cli": "^1.6.0-beta.2",
     "@angular/compiler-cli": "^5.0.2",
     "@angular/language-service": "^5.0.2",
     "@angular/service-worker": "^5.0.2",

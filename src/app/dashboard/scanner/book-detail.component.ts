@@ -115,6 +115,8 @@ export class BookDetailComponent implements OnInit, AfterViewInit {
   // @HostBinding('style.display')   display = 'block';
   // @HostBinding('style.position')  position = 'absolute';
 
+  expanded : boolean;
+  
   @ViewChild('readmore') _readmore: ElementRef;
   private readmore: HTMLAnchorElement;
 

@@ -1,3 +1,4 @@
+import { LoginOauthComponent } from '../login-oauth/login-oauth.component';
 import { AuthService } from '@oo/auth.service';
 import { ShelveResolver } from './shelve/shelve-resolver.service';
 import { resolve } from 'path';
@@ -45,6 +46,10 @@ const routes: Routes = [
                     {
                         path: 'login',
                         loadChildren: 'app/dashboard/login/login.module#LoginModule'
+                    },
+                    {
+                        path: 'login-oauth',
+                        component: LoginOauthComponent
                     },
                     {
                         path: '',

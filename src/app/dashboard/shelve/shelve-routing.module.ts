@@ -15,7 +15,7 @@ const routes: Routes = [
             {
                 path: '',
                 component: BookCardListComponent, 
-                //canActivate:[AuthGuard],
+                canActivate:[AuthGuard],
                 resolve: { books: ShelveResolver }
             }
         ]

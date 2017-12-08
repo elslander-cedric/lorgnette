@@ -16,7 +16,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 
       </mat-card-header>
 
-      <mat-card-content>{{ book?.description }}</mat-card-content>
+      <!-- <mat-card-content>{{ book?.description }}</mat-card-content> -->
       <mat-card-footer></mat-card-footer>
       
       <mat-card-actions>        

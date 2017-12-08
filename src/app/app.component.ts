@@ -7,6 +7,7 @@ import { Config } from './config';
 import { Book } from './book/book';
 import { BookStore } from './book/book-store';
 import { MatIconRegistry } from '@angular/material';
+import { NotificationService } from '@oo/notification.service';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +36,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     private config: Config,
     private store: Store<BookStore>,
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer) {
+    //private notificationService: NotificationService,
+    private domSanitizer: DomSanitizer
+    ) {      
       this.books = this.store.select('books');
       this.matIconRegistry.addSvgIcon('lorgnette',
         domSanitizer.bypassSecurityTrustResourceUrl('/assets/lorgnette_24x24.svg'));
@@ -56,6 +59,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     */
 
     // this.books = this.goodreads.toRead(this.config.goodreadsUID);
+
+    //this.notificationService.register();
   }
 
   /*

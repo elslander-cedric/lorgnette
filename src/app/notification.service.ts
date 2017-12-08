@@ -1,107 +1,72 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptionsArgs } from '@angular/http';
-import { SwPush, SwUpdate } from '@angular/service-worker';
-import { Notification } from "angular2-notifications";
+import { Http } from '@angular/http';
+import { SwPush } from '@angular/service-worker';
+import { MatSnackBar } from '@angular/material';
 
 import 'rxjs/add/operator/toPromise';
-/*
+
 @Injectable()
 export class NotificationService {
   
-  private registration : PushRegistration;
+  private subscription : PushSubscription;
 
   constructor(
     private http: Http,
-    private sw: ServiceWorker, 
-    private pnService: PushNotificationsService) { }
-
-  public init() : void {
-    this.sw.log().subscribe(message => console.log(message));
-
-    this.register();
-    
-    if(this.pnService.isSupported()) {
-      this.pnService.requestPermission();
-    }
-  }
+    private swPush: SwPush,
+    private snackBar: MatSnackBar) {}
 
   public register() : void {
-    let options : PushSubscriptionOptionsInit = {
-      applicationServerKey: //this.urlBase64ToUint8Array(
+    let options = {
+      serverPublicKey: //this.urlBase64ToUint8Array(
         'BEbzsJrblsB9rF4Jx8SD-bO3768-w2t0Oa0vRZ5fqmhgiX6Mx8P5qjYMU5OBtq3fiWiane0trsDiNPFxfPUdhx8'
       //)
     };
 
-    this.sw
-      .registerForPush(options)
-      .subscribe((registration : NgPushRegistration) : void => {
-        console.log("registered: ", registration);
-        this.registration = registration;
-        
-        this.sw.push.subscribe(pushMessage => {
-          console.log("received push message:", pushMessage);
-        }, error => {
-          console.log("push message not ok:", error);
-        }, () => {
-          console.log("push message completed");
-        });
+    this.swPush.messages.subscribe((notification) => {
+      console.debug("received notification: ", notification);
 
-        this.sendRegistration(registration)
-          .then(result => {
-            console.log("registration was sent successfully: ", result);
-          })
-          .catch(error => {
-            console.error("could not send registration:", error);
+      /*
+      Notification.requestPermission((result) => {
+        if (result === 'granted') {
+          navigator.serviceWorker.ready.then(registration => {
+            registration.showNotification('ze title', {
+              //renotify: true,
+              //silent: false,
+              //sound: './assets/notification.wav',
+              //noscreen: false,
+              //sticky: true,
+              //vibrate: [100,200,100,400]
+              body: 'message of the notification',
+              icon: './assets/icon.png',
+              tag: 'tag',
+              dir: 'auto', // | 'ltr' | 'rtl'
+              lang: 'en'
+            });
           });
-      }, (error : any) : void => {
-        console.error("registration failed with:", error);
-
-      }, () : void => {
-        console.log("registration completed");
-
+        }
       });
-  }
 
-  public unregister() : void{
-    this.registration.unsubscribe().subscribe((success : boolean) : void => {
-      console.log("unregistered");
-    }, (error : any) : void => {
-      console.error("unregistration failed with:", error);
+      */
+    });
 
-    }, () : void => {
-      console.log("unregistration completed");
+    this.swPush
+      .requestSubscription(options)
+      .then(pushSubscription => {
+        this.subscription = pushSubscription;
 
-    })
-  }
-
-  public showNotification() : void {
-    let pushNotification : PushNotification = {
-      body: 'message of the notification',
-      icon: './assets/icon.png',
-      tag: 'tag',
-      renotify: true,
-      silent: false,
-      sound: './assets/notification.wav',
-      noscreen: false,
-      sticky: true,
-      dir: 'auto', // | 'ltr' | 'rtl'
-      lang: 'en',
-      vibrate: [100,200,100,400]
-    }
-
-    this.pnService.create('title of the notification', pushNotification);
-  }
-
-  private sendRegistration(registration : NgPushRegistration) : Promise<any> {
-      let url : URL;
-      let options : RequestOptionsArgs = {};
-
-      console.log("sending registration ...");
-
-      return this.http.post('/register', {
-        registration: registration.toJSON()
-      }, options)
-      .toPromise();
+        console.debug("Sending subscription ...");
+  
+        this.http
+        .post('/subscribe', { subscription: pushSubscription })
+        .toPromise()
+        .then(() => {
+          this.snackBar.open('Now you are subscribed', null, {
+            duration: 2000
+          }); 
+        })
+        .catch(err => console.error(err));
+      })
+      .catch( err => console.error(err));
   }
 
   private urlBase64ToUint8Array(base64String) : Uint8Array {
@@ -119,4 +84,3 @@ export class NotificationService {
     return outputArray;
   }
 }
-*/

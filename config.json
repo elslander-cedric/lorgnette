@@ -1,0 +1,20 @@
+{
+
+  "booksdir": "/home/cedric/books",
+  "downloadsdir": "/home/cedric/downloads",
+  "port": 1445,
+  "emailService": "Yahoo",
+  "emailPassword": "ce@YAHOO",
+  "emailFrom": "elslander_cedric@yahoo.com",
+  "emailTo": "elslander_cedric@kindle.com, cedric.elslander@gmail.com",
+  "transmissionHost": "localhost",
+  "transmissionPort": 9091,
+  "transmissionUser": "cedric",
+  "transmissionPassword": "ce@TRANSMISSION",
+  "cloudconvertAPIKey": "",
+  "goodreadsAPISecret": "sRkatEj04cPtm3bgNN6J7TmtqqWBkOphifA1mF94eo",
+  "goodreadsAPIKey": "w3qN6mPoYXHf70ctel9og",
+  "goodreadsUID": "58081960-cedric-elslander",
+  "localconversion": true,
+  "calibre-profile": "kindle_pw3"
+}

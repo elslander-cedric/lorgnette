@@ -5,6 +5,7 @@ import {
     CanActivate,
     CanActivateChild,
     CanLoad,
+    NavigationExtras,
     Route,
     Router,
     RouterStateSnapshot,
@@ -16,18 +17,18 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
     constructor(
         private authService: AuthService,
-        private router: Router) {}
+        private router: Router) { }
 
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): boolean {
 
-        if(this.authService.authenticated){
+        if (this.authService.authenticated) {
             return true;
         } else {
             this.authService.redirectUrl = state.url;
-            this.router.navigate(['/login']);
+            this.authenticate();
             return false;
         }
     }
@@ -37,12 +38,28 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     }
 
     public canLoad(route: Route): Observable<boolean> | Promise<boolean> | boolean {
-        if(this.authService.authenticated){
+        if (this.authService.authenticated) {
             return true;
         } else {
             this.authService.redirectUrl = route.path;
-            this.router.navigate(['/login']);
+            this.authenticate();
             return false;
         }
+    }
+
+    public authenticate() {
+        //this.router.navigate(['/login-oauth']);
+
+        this.authService.login().subscribe(() => {
+            if (this.authService.authenticated) {
+                let navigationExtras: NavigationExtras = {
+                    queryParamsHandling: 'preserve',
+                    preserveFragment: true
+                };
+
+                // Redirect the user
+                this.router.navigate([this.authService.redirectUrl], navigationExtras);
+            }
+        });
     }
 }

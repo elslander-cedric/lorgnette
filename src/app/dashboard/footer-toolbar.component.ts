@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
       <mat-icon routerLink="/scanner" svgIcon='lorgnette'></mat-icon>
       <!-- <mat-icon routerLink="[/shelve, { outlets: { header: '[/header-search-toolbar]'}}]">local_library</mat-icon> -->
       <mat-icon routerLink="/shelve">local_library</mat-icon>
-      <mat-icon routerLink="/profile">person</mat-icon>
+      <mat-icon routerLink="/login-oauth">person</mat-icon>
     </mat-toolbar>
   `,
   styles: [`
