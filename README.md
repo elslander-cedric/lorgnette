@@ -1,3 +1,7 @@
+[![Dependencies Status](https://david-dm.org/elslander-cedric/lorgnette/status.svg)](https://david-dm.org/elslander-cedric/lorgnette)
+[![Build Status](https://travis-ci.org/elslander-cedric/lorgnette.svg?branch=master)](https://travis-ci.org/elslander-cedric/lorgnette)
+[![Coverage Status](https://coveralls.io/repos/github/elslander-cedric/lorgnette/badge.svg)](https://coveralls.io/repos/github/elslander-cedric/lorgnette)
+
 # Lorgnette
 
 Book scanner
@@ -19,12 +23,6 @@ Book scanner
 
 ## Project Status
 
-[![Dependencies Status](https://david-dm.org/elslander-cedric/lorgnette/status.svg)]
-((https://david-dm.org/elslander-cedric/lorgnette/)
-
-[![Build Status](https://travis-ci.org/elslander-cedric/lorgnette.svg?branch=master)]https://travis-ci.org/elslander-cedric/lorgnette)
-
-[![Coverage Status](https://coveralls.io/repos/github/elslander-cedric/lorgnette/badge.svg)](https://coveralls.io/github/elslander-cedric/lorgnette)
 
 ## Supported Devices
 
