@@ -11,7 +11,8 @@
     "auto-deploy": "nodemon --watch 'src' -e ts --exec 'ng build && cp -r dist/* ../lorgnette-server/dist/'",
     "auto-deploy-prod": "nodemon --watch 'src' -e ts --exec 'ng build --prod && cp -r dist/* ../lorgnette-server/dist/'",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng build --prod",
+    "ngtest": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

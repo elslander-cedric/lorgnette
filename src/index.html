@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Lorgnette</title>
@@ -7,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  
+
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
 
   <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
@@ -15,9 +16,30 @@
   <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#f27b00"> 
+  <meta name="theme-color" content="#f27b00">
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js"></script>
+  
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyATJnu9FYOi3-s2QZqmKne3LS_ECbUzc-M",
+      authDomain: "lorgnette-ce.firebaseapp.com",
+      databaseURL: "https://lorgnette-ce.firebaseio.com",
+      projectId: "lorgnette-ce",
+      storageBucket: "lorgnette-ce.appspot.com",
+      messagingSenderId: "588019764963"
+    };
+    firebase.initializeApp(config);
+  </script>
 </head>
+
 <body>
   <app-root></app-root>
 </body>
+
 </html>
