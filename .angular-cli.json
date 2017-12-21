@@ -22,7 +22,7 @@
       "serviceWorker": true,
       "styles": [
         "lorgnette-theme.scss"
-      ],      
+      ],
       "scripts": [
         "../node_modules/hammerjs/hammer.min.js"
       ],
@@ -30,7 +30,41 @@
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
+      },
+      "appShell": {
+        "app": "lorgnette-universal",
+        "route": "shell"
       }
+    },
+    {
+      "root": "src",
+      "outDir": "dist-server/",
+      "assets": [
+        "assets",
+        "favicon.ico",
+        "manifest.json"
+      ],
+      "index": "index.html",
+      "main": "main.server.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.server.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "lorgnette",
+      "serviceWorker": true,
+      "styles": [
+        "lorgnette-theme.scss"
+      ],
+      "scripts": [
+        "../node_modules/hammerjs/hammer.min.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      },
+      "platform": "server",
+      "name": "lorgnette-universal"
     }
   ],
   "e2e": {
@@ -59,7 +93,6 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {
-    }
-  }  
+    "component": {}
+  }
 }

@@ -29,7 +29,7 @@ import { animate, AnimationTriggerMetadata, state, style, transition, trigger } 
           <div [ngClass]="'outline'" fxLayout="column">
               <div [ngClass]="'title'">{{ book.title}}</div>
               <div [ngClass]="'author'">{{ book.author }}</div>            
-              <ngb-rating [readonly]="true" max="5" [rate]="book?.rating"></ngb-rating>
+              <!-- <ngb-rating [readonly]="true" max="5" [rate]="book?.rating"></ngb-rating> -->
           </div>
       </div>
       

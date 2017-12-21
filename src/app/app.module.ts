@@ -9,7 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppStoreModule } from './app-store.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -30,12 +30,12 @@ import { LoginOauthComponent } from '@oo/login-oauth/login-oauth.component';
     LoginOauthComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,    
     environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
     HttpModule,
     FlexLayoutModule,
-    NgbModule.forRoot(),
+    //NgbModule.forRoot(),
     MaterialModule,
     RouterModule,
     AppStoreModule,
@@ -44,8 +44,8 @@ import { LoginOauthComponent } from '@oo/login-oauth/login-oauth.component';
   ],
   exports: [
     MaterialModule,
-    FlexLayoutModule,
-    NgbModule
+    FlexLayoutModule
+    //NgbModule
   ],
   providers: [
     environment.production ? NotificationService : [],

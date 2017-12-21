@@ -15,7 +15,7 @@ import { BookCardComponent } from './book-card.component';
 import { BookCardListComponent } from './book-card-list.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -28,7 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         CommonModule,
         MaterialModule,
         FlexLayoutModule,
-        NgbModule,
+        //NgbModule,
         ShelveRoutingModule        
     ],
     exports: [],

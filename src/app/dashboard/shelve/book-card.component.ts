@@ -10,8 +10,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
           <div fxLayout="column">
                   <mat-card-title>{{ book.title }}</mat-card-title>
                   <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
-                  <ngb-rating [readonly]="true" max="5" [rate]="book?.rating">
-                  </ngb-rating>
+                  <!-- <ngb-rating [readonly]="true" max="5" [rate]="book?.rating"></ngb-rating> -->
           </div>
 
       </mat-card-header>

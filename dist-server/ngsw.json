@@ -1,0 +1,76 @@
+{
+  "configVersion": 1,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/favicon.ico",
+        "/main.6c37b3291b69a7860274.bundle.js",
+        "/polyfills.bf1181adbeb2d6eb8ba4.bundle.js",
+        "/scripts.b34200588a911f5777b5.bundle.js",
+        "/styles.0d0dc28d456222f73c59.bundle.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/barcode.gif",
+        "/assets/book.png",
+        "/assets/lorgnette_24x24.svg",
+        "/assets/lorgnette_24x24_bw.svg"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "externals",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [],
+      "patterns": [
+        "https:\\/\\/fonts\\.googleapis\\.com\\/.*",
+        "https:\\/\\/fonts\\.gstatic\\.com\\/.*",
+        "https:\\/\\/maxcdn\\.bootstrapcdn\\.com\\/.*"
+      ]
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-freshness",
+      "patterns": [
+        "\\/timeline"
+      ],
+      "strategy": "freshness",
+      "maxSize": 100,
+      "maxAge": 259200000,
+      "timeoutMs": 10000,
+      "version": 1
+    },
+    {
+      "name": "api-performance",
+      "patterns": [
+        "\\/favorites"
+      ],
+      "strategy": "performance",
+      "maxSize": 100,
+      "maxAge": 259200000,
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/main.6c37b3291b69a7860274.bundle.js": "bb7089c63172ba1149cdcc587982a517a524196e",
+    "/assets/barcode.gif": "9de14c6e9bb14e3fce5277a7fe6e7349b5e66a54",
+    "/polyfills.bf1181adbeb2d6eb8ba4.bundle.js": "0a1e371fe53da40b782197261b5a29890dfe08d7",
+    "/assets/book.png": "4efdabc38a82be7ea14fbbcca961dbc03ed4a485",
+    "/scripts.b34200588a911f5777b5.bundle.js": "d1f8ba80efa9eb46d5c1e7fff25b50bb35ed8fa3",
+    "/assets/lorgnette_24x24.svg": "6e166bea5b366f0464fa492cc3decf3f27ee3386",
+    "/styles.0d0dc28d456222f73c59.bundle.css": "ddf8c536ff5bb01837dcb4f2c45dc5b9aa8f2b28",
+    "/assets/lorgnette_24x24_bw.svg": "c123d4727a8dc3f3eda507c1102cb6977db76708",
+    "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01"
+  }
+}

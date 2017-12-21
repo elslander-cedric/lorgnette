@@ -22,7 +22,10 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
         FlexLayoutModule,
         DashboardRoutingModule
     ],
-    exports: [],
+    exports: [
+        HeaderToolbarComponent,        
+        FooterToolbarComponent
+    ],
     providers: [],
 })
 export class DashboardModule {}

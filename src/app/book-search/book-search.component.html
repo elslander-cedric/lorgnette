@@ -10,7 +10,7 @@
       <div ngClass='book'>
         <mat-spinner [hidden]="!book.downloading" mode="indeterminate"></mat-spinner>
         <img ngClass='cover' src="{{ book.cover }}" (click)="download(book)">
-        <ngb-rating [starTemplate]="t" max="5" readonly='true' [(rate)]="book.rating"></ngb-rating>
+        <!-- <ngb-rating [starTemplate]="t" max="5" readonly='true' [(rate)]="book.rating"></ngb-rating> -->
       </div>
     </mat-grid-tile>
   </mat-grid-list>

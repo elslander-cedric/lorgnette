@@ -33,8 +33,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  private id: String = 'id';
-  private name: String = 'name';
+  id: String = 'id';
+  name: String = 'name';
 
   constructor(
     private router: Router,
