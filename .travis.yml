@@ -1,19 +1,30 @@
 language: node_js
+
 node_js:
-- node
+  - node
+
 branches:
   only:
   - master
   - gh-pages
   - /.*/
+
 before_script:
-- npm install -g firebase-tools
-- npm install -g @angular/cli
+  - npm install -g @angular/cli
+
 script:
-- ng build --prod --aot
-after_success:
-- firebase deploy --token $FIREBASE_TOKEN
+  - npm run build-prod
+
+before_deploy:  
+  - cd dist
+  - tar -czvf ../lorgnette-${TRAVIS_TAG}.tar.gz
+  - cd ..
+
 deploy:
+   - provider: firebase
+     token:
+       secure: $FIREBASE_TOKEN
+     skip_cleanup: true     
    - provider: pages
      skip_cleanup: true
      github_token: $GITHUB_TOKEN
@@ -21,15 +32,14 @@ deploy:
        branch: master
    - provider: releases
      api_key:
-      secure: 6a90eLUt9K+hkk4okbkQaSP7cmrIivx9SBo672vnSUyiqisRTMhUw7bOMB0xSY5MgO7V8ncaGPyFnRH4fSpQnO3vFLF/kvBp52MBOeqYJYRlfrEsDbntC9jIQl0aL1m6T/FVmWnRdl7CkkZsmhL4sE0UlISPxQaqJudbpJJYboWEuBdLgA0W3lyGzznRATMcj/rWl0gaJ0mIdX6cPmLoCF2/+41prdGItFBOMZw0S+xZ7kzjbRgyn3K4FZc9D3qb4q57dMRkeIkctsrM1rLooQFfDTIZKAhzlHF9Ofx96QlwqA8a9tpvv9I9pp+Jn9Qa+v/FtLM9YBVokkEB/KKKiZrM4eHqTJYF9n26WURFcaWpUuHkVVuODR0UpJmk4a6CbyG2ps26IvzU7TP1jHFQIsSJ3d+ctLZFukjoPo5nrShbeNeLBeX1Sd5C/IRPDHFbL4MuxzTg33zv+Wst4eXRT8+sqEeBxUfjX2gJ2x69m0L0U1NU9Ug3RgCd++F4yiXNhc/HjwZj40+wctoL+zFn7emTiqNkXieHlWWIqxwMPoJWzXZgnn2mADKOCNqIosRWyIFDSkFBxWpImvfn7JdxPbgIZ8a3s3TlBnO036S0R2XhXmzNy0rHFaw199a6FDpkskVK2nV8Hnenp4ijmmMUkfbNhZqD9ESMmX2+QVddc4E=
-     file_glob: true
-     file: "dist/*"
+      secure: $GITHUB_KEY
+     file: "lorgnette-${TRAVIS_TAG}.tar.gz"
      skip_cleanup: true
      on:
        tags: true
    - provider: npm
      email: cedric.elslander@gmail.com
      api_key:
-       secure: X/rDZ92cbpsfyVbem6eTNvcjOQYcuSfliHVxOvM6CfD/c1Yw8DbdYACNsmZ5eUqmhzxBH2p9TWt8MWpehMykh7hR+UmdxlUnRdYbbij0WfzsDaUKE9Wp65KpvN2uvEcLXDL2iTwPhOuwdwbmGkRTQqzfmhwSnMcH522NfAZbPbyl1OewXFhuhtUAuLXEC/DKfhJY/hP0rC2vi+ltOwgKk3bUrYq/JRwqyMhhomL2WwRVr5+BvgqDOv23zT8DvXsyIWu/l5NMQ3Jbt9EXyV/RpULh6jZpSXh9MBheFvfX0nM9ML5wn8ZVqRwhFYwikJKOSIxqjSecbwp9GW4ug3R+reYq1PuqVqgou5/K/31AzbVwhY2IRqrSf5xlbgPQpUSArzCENIejBsuTFINV4GbHU6H8qwfumjpPaChnOci4ZH19TY/hxmU9Fbq3VC5yAheuCCZEXWumvVlhTtU2f3qRkdeeyZuKXlJcxHeyhQGrWPk8plxJFPZ1UWuIkFZ04qNjCGKs+uvc+0nG9VV05pT5ErdaMZNSk8Rg7hDltUckzpGOvbgeNKAjZxRKI5IQPVMGn9yqsEBBZVKuC/PXY98U/EH6138+bxv81Ut4Lm1cJ923T6lvpiuh6P7dwoKERx2HqHgRuuQ9tMepK0uAD3xRE7WGtb3lJDa4tFAhYOVkNHU=
+       secure: $NPM_API_KEY
      on:
        tags: true
