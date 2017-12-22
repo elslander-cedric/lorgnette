@@ -26,4 +26,11 @@ deploy:
      on:
        tags: true
        all_branches: true
-    
+       repo: elslander-cedric/lorgnette
+   - provider: npm
+     email: cedric.elslander@gmail.com
+     api_key:
+       secure: X/rDZ92cbpsfyVbem6eTNvcjOQYcuSfliHVxOvM6CfD/c1Yw8DbdYACNsmZ5eUqmhzxBH2p9TWt8MWpehMykh7hR+UmdxlUnRdYbbij0WfzsDaUKE9Wp65KpvN2uvEcLXDL2iTwPhOuwdwbmGkRTQqzfmhwSnMcH522NfAZbPbyl1OewXFhuhtUAuLXEC/DKfhJY/hP0rC2vi+ltOwgKk3bUrYq/JRwqyMhhomL2WwRVr5+BvgqDOv23zT8DvXsyIWu/l5NMQ3Jbt9EXyV/RpULh6jZpSXh9MBheFvfX0nM9ML5wn8ZVqRwhFYwikJKOSIxqjSecbwp9GW4ug3R+reYq1PuqVqgou5/K/31AzbVwhY2IRqrSf5xlbgPQpUSArzCENIejBsuTFINV4GbHU6H8qwfumjpPaChnOci4ZH19TY/hxmU9Fbq3VC5yAheuCCZEXWumvVlhTtU2f3qRkdeeyZuKXlJcxHeyhQGrWPk8plxJFPZ1UWuIkFZ04qNjCGKs+uvc+0nG9VV05pT5ErdaMZNSk8Rg7hDltUckzpGOvbgeNKAjZxRKI5IQPVMGn9yqsEBBZVKuC/PXY98U/EH6138+bxv81Ut4Lm1cJ923T6lvpiuh6P7dwoKERx2HqHgRuuQ9tMepK0uAD3xRE7WGtb3lJDa4tFAhYOVkNHU=
+     on:
+       tags: true
+       repo: elslander-cedric/lorgnette
