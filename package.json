@@ -1,6 +1,6 @@
 {
-  "name": "lorgnette",
-  "version": "0.0.0",
+  "name": "@elslander-cedric/lorgnette",
+  "version": "1.0.0-alpha",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -17,7 +17,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^5.0.2",
     "@angular/cdk": "^5.0.0-rc0",
