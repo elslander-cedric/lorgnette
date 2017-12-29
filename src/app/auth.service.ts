@@ -6,29 +6,29 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AuthService {
 
-    private _authenticated: boolean = true;
+    private _authenticated = true;
     public redirectUrl: string;
 
     constructor(
         private http: Http,
-        private router: Router) {}
+        private router: Router) { }
 
     public get authenticated() {
         return this._authenticated;
     }
-    
+
     public login(): Observable<boolean> {
 
         this._authenticated = true;
 
-        if(!this._authenticated) {
+        if (!this._authenticated) {
 
             this.router.navigate(['/login-oauth']);
-            
-            //window.location.href = 'http://localhost:1445/oauth';
+
+            // window.location.href = 'http://localhost:1445/oauth';
 
             /*
-            this.http    
+            this.http
                 .get('/oauth')
                 .toPromise()
                 .then((response) => this.router.navigate([response]))
@@ -36,12 +36,11 @@ export class AuthService {
                     console.log(response);
                     //this.router.navigate(
                     window.document.write(response);
-                    
                     return true;
                     //return response.json().authenticated;
                 });
             */
-            
+
             return Observable.of(true).do(authResult => this._authenticated = authResult);
         } else {
             return Observable.of(true);

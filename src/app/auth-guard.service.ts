@@ -33,7 +33,9 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
         }
     }
 
-    public canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    public canActivateChild(
+        childRoute: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         return this.canActivate(childRoute, state);
     }
 
@@ -48,11 +50,11 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     }
 
     public authenticate() {
-        //this.router.navigate(['/login-oauth']);
+        // this.router.navigate(['/login-oauth']);
 
         this.authService.login().subscribe(() => {
             if (this.authService.authenticated) {
-                let navigationExtras: NavigationExtras = {
+                const navigationExtras: NavigationExtras = {
                     queryParamsHandling: 'preserve',
                     preserveFragment: true
                 };

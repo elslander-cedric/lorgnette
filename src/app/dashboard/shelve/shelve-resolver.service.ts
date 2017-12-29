@@ -7,15 +7,15 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 
 @Injectable()
 export class ShelveResolver implements Resolve<Array<Book>> {
-    
+
     constructor(
         private goodreads: GoodreadsService,
-        private config: Config) {}
+        private config: Config) { }
 
     resolve(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<Array<Book>> {
-        return  this.goodreads.toRead(this.config.goodreadsUID);
-    }    
+        return this.goodreads.toRead(this.config.goodreadsUID);
+    }
 }

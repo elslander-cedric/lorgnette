@@ -10,12 +10,12 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
     {
         path: '',
-        component: ShelveComponent,   
+        component: ShelveComponent,
         children: [
             {
                 path: '',
-                component: BookCardListComponent, 
-                canActivate:[AuthGuard],
+                component: BookCardListComponent,
+                canActivate: [AuthGuard],
                 resolve: { books: ShelveResolver }
             }
         ]
@@ -25,6 +25,6 @@ const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
-    providers: [ ShelveResolver ]
+    providers: [ShelveResolver]
 })
-export class ShelveRoutingModule {}
+export class ShelveRoutingModule { }

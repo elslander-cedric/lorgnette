@@ -1,5 +1,5 @@
 export class Config {
-    private _captureMode : string;
+    private _captureMode: string;
     private _goodreadsAPIKey: string;
     private _goodreadsUID: string;
 

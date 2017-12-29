@@ -13,7 +13,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     declarations: [
         DashboardComponent,
         HeaderSearchToolbarComponent,
-        HeaderToolbarComponent,        
+        HeaderToolbarComponent,
         FooterToolbarComponent
     ],
     imports: [
@@ -23,9 +23,9 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
         DashboardRoutingModule
     ],
     exports: [
-        HeaderToolbarComponent,        
+        HeaderToolbarComponent,
         FooterToolbarComponent
     ],
     providers: [],
 })
-export class DashboardModule {}
+export class DashboardModule { }

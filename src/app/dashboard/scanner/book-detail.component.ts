@@ -21,28 +21,27 @@ import {
 import { animate, AnimationTriggerMetadata, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
-  selector: 'lorgnette-book-detail',
+  selector: 'oo-book-detail',
   template: `
     <div fxLayout="column">
       <div [ngClass]="'heading'" fxLayout="row">
           <img [src]="book?.cover"/>
           <div [ngClass]="'outline'" fxLayout="column">
               <div [ngClass]="'title'">{{ book.title}}</div>
-              <div [ngClass]="'author'">{{ book.author }}</div>            
+              <div [ngClass]="'author'">{{ book.author }}</div>
               <!-- <ngb-rating [readonly]="true" max="5" [rate]="book?.rating"></ngb-rating> -->
           </div>
       </div>
-      
-      <div #description [ngClass]="['description', expanded ? 'expanded' : 'collapsed']" [innerHTML]="book.description"></div>    
+      <div #description [ngClass]="['description', expanded ? 'expanded' : 'collapsed']" [innerHTML]="book.description"></div>
       <a #readmore [ngClass]="['readmore']" role="button" tabindex="0" [hidden]="expanded" (click)="expanded = true">Read More</a>
-    </div>  
+    </div>
   `,
   styles: [`
-    .heading {    
+    .heading {
         flex: 1 0 auto;
     }
 
-    .description {    
+    .description {
         margin-top: 5%;
         flex: 1 1 auto;
         -webkit-overflow-scrolling: touch;
@@ -59,7 +58,7 @@ import { animate, AnimationTriggerMetadata, state, style, transition, trigger } 
     .description.expanded {
         overflow: scroll;
     }
-      
+
     ngb-rating:focus {
         outline: none;
     }
@@ -115,8 +114,8 @@ export class BookDetailComponent implements OnInit, AfterViewInit {
   // @HostBinding('style.display')   display = 'block';
   // @HostBinding('style.position')  position = 'absolute';
 
-  expanded : boolean;
-  
+  expanded: boolean;
+
   @ViewChild('readmore') _readmore: ElementRef;
   private readmore: HTMLAnchorElement;
 
@@ -129,28 +128,26 @@ export class BookDetailComponent implements OnInit, AfterViewInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _goodreads: GoodreadsService,
-    private element: ElementRef,
-    private renderer: Renderer2) { }
+    private _element: ElementRef,
+    private _renderer: Renderer2) { }
 
   ngOnInit() {
-    //this.book = this._route.paramMap.switchMap((params: ParamMap) => 
+    // this.book = this._route.paramMap.switchMap((params: ParamMap) =>
     //  this._goodreads.getDetails(params.get('isbn')));
 
-    //this.book = this._route.queryParamMap.switchMap((queryParamMap: ParamMap) =>
+    // this.book = this._route.queryParamMap.switchMap((queryParamMap: ParamMap) =>
     //  this._goodreads.getDetails(queryParamMap.get('isbn')));
   }
 
   public ngAfterViewInit(): void {
-
-    
     this.description = this._description.nativeElement;
     this.readmore = this._readmore.nativeElement;
 
     if (this.description.scrollHeight > this.description.clientHeight) {
-      console.log("need read more");
+      console.log('need read more');
       this.renderer.removeClass(this.readmore, 'hidden');
     } else {
-      console.log("don't need read more");
+      console.log('don\'t need read more');
       this.renderer.addClass(this.readmore, 'hidden');
     }
   }

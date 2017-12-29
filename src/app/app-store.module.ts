@@ -15,7 +15,7 @@ export function booksReducer(state: Array<Book> = [], action: BookStoreAction) {
         default:
             return state;
     }
-};
+}
 
 @NgModule({
     imports: [
@@ -26,3 +26,4 @@ export function booksReducer(state: Array<Book> = [], action: BookStoreAction) {
     ]
 })
 export class AppStoreModule { }
+

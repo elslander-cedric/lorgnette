@@ -5,12 +5,12 @@ import { Observable, Subject } from 'rxjs/Rx';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'lorgnette-scanner',
+  selector: 'oo-scanner',
   template: `
     <div [ngClass]="'content'" fxLayout="column">
-      <lorgnette-barcode #barcode></lorgnette-barcode>
+      <oo-barcode #barcode></oo-barcode>
       <div fxLayout="column" *ngIf="book | async as book">
-          <lorgnette-book-detail [book]="book"></lorgnette-book-detail>
+          <oo-book-detail [book]="book"></oo-book-detail>
           <button mat-raised-button color="primary" fxFlex="0 0 auto"
               [routerLink]="['/shelve/add', { isbn: book.isbn }]"
               [queryParams]="{ boem: 'kaboem' }" [fragment]="'fraggy'">
@@ -26,9 +26,9 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/
         padding: 5%;
     }
 
-    lorgnette-book-detail {
+    oo-book-detail {
         margin-top: 5%;
-        margin-bottom: 5%;    
+        margin-bottom: 5%;
         display: flex;
         flex: 1 1 auto;
     }
@@ -44,7 +44,7 @@ export class ScannerComponent implements OnInit {
 
   constructor(private goodreads: GoodreadsService) { }
 
-  public ngOnInit(): void {    
+  public ngOnInit(): void {
     this.book = this.barcodeFinder.barcode
       .switchMap((barcode: string) => this.goodreads.getDetails(barcode));
   }

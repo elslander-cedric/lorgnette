@@ -2,27 +2,28 @@ import { Config } from '@oo/config';
 import { Subject } from 'rxjs/Rx';
 import { BarcodeDecoder } from './barcode-decoder';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
-  selector: 'lorgnette-barcode',
+  selector: 'oo-barcode',
   template: `
     <video #video class="video" [hidden]="captureMode !== 'video'" (load)="captureFromCamera()"></video>
     <img #img [ngClass]="['image']" src="assets/barcode.gif" [hidden]="captureMode !== 'image'" (load)="captureFromImage()" />
   `,
   styles: [`
     .video {
-        height: 50%;    
+        height: 50%;
         width: 100%;
         transform: scale(1);
         overflow: hidden;
     }
 
     .image {
-        width: 100%;    
+        width: 100%;
     }
   `]
 })
-export class BarcodeFinderComponent implements OnInit {
+export class BarcodeFinderComponent implements OnInit, AfterViewInit {
 
   @ViewChild('video') _video;
   private video: HTMLVideoElement;
@@ -32,19 +33,19 @@ export class BarcodeFinderComponent implements OnInit {
   private _barcode: Subject<string>;
   private _captureMode: string;
 
-  constructor(private config : Config) {
+  constructor(private config: Config) {
     this._captureMode = config.captureMode;
     this._barcode = new Subject<string>();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngAfterViewInit() {
     this.video = this._video.nativeElement;
-    this.image = this._img.nativeElement;  
-  }    
+    this.image = this._img.nativeElement;
+  }
 
-  public get barcode() {    
+  public get barcode() {
     return this._barcode;
   }
 
@@ -52,39 +53,39 @@ export class BarcodeFinderComponent implements OnInit {
     return this._captureMode;
   }
 
-  public captureFromCamera() : void {
-    let mediaStreamConstraints : MediaStreamConstraints = {
+  public captureFromCamera(): void {
+    const mediaStreamConstraints: MediaStreamConstraints = {
       audio: false,
       video: {
         //   frameRate: 60,
         //   aspectRatio: 1/1
-        facingMode: "environment"
+        facingMode: 'environment'
       }
-    };    
+    };
 
     navigator.mediaDevices
       .getUserMedia(mediaStreamConstraints)
-      .then((mediaStream : MediaStream) => {
+      .then((mediaStream: MediaStream) => {
         this.video.srcObject = mediaStream;
         this.video.onloadedmetadata = () => {
           this.video.play();
-                      
+
           this._barcode.concat(new BarcodeDecoder()
             .scanVideo(this.video)
             .debounceTime(800)
-            .distinctUntilChanged());          
+            .distinctUntilChanged());
         };
       })
       .catch(error => {
-        console.error("Could not get User Media:", error);
+        console.error('Could not get User Media:', error);
       });
   }
 
-  public captureFromImage() : void {
-    let barcode = new BarcodeDecoder()
+  public captureFromImage(): void {
+    const barcode = new BarcodeDecoder()
       .scanImage(this.image);
-   
-    if(barcode) {
+
+    if (barcode) {
       this._barcode.next(barcode);
     }
   }

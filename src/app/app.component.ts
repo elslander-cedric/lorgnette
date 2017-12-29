@@ -10,7 +10,7 @@ import { MatIconRegistry } from '@angular/material';
 import { NotificationService } from '@oo/notification.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'oo-root',
   template: `
     <router-outlet></router-outlet>
   `,
@@ -29,29 +29,29 @@ import { NotificationService } from '@oo/notification.service';
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
-  public books : Observable<Array<Book>>;
+  public books: Observable<Array<Book>>;
   public book: Observable<Book>;
-  
+
   constructor(
     private config: Config,
     private store: Store<BookStore>,
     private matIconRegistry: MatIconRegistry,
-    //private notificationService: NotificationService,
+    // private notificationService: NotificationService,
     private domSanitizer: DomSanitizer
-    ) {      
-      this.books = this.store.select('books');
-      this.matIconRegistry.addSvgIcon('lorgnette',
-        domSanitizer.bypassSecurityTrustResourceUrl('/assets/lorgnette_24x24.svg'));
-    }
+  ) {
+    this.books = this.store.select('books');
+    this.matIconRegistry.addSvgIcon('lorgnette',
+      domSanitizer.bypassSecurityTrustResourceUrl('/assets/lorgnette_24x24.svg'));
+  }
 
-  public ngAfterViewInit(): void {}
+  public ngAfterViewInit(): void { }
 
   public ngOnInit(): void {
     this.init();
   }
 
-  public init() : void {
-    
+  public init(): void {
+
     /*
     this.book = this.scanner.barcode.switchMap((barcode : string) : Observable<Book> => {
       return this.lookupISBN(barcode);
@@ -60,7 +60,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     // this.books = this.goodreads.toRead(this.config.goodreadsUID);
 
-    //this.notificationService.register();
+    // this.notificationService.register();
   }
 
   /*
@@ -68,8 +68,8 @@ export class AppComponent implements OnInit, AfterViewInit {
      return this.goodreads.getDetails(isbn);
   }
   */
-  
-  private addBook(book : Book) : void{
+
+  private addBook(book: Book): void {
     // this.store.dispatch
     //   (new BookAction(BookAction.ADD_BOOK, book));
   }

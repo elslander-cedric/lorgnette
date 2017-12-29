@@ -12,27 +12,27 @@ export class GoodreadsService {
 
     constructor(
         private config: Config,
-        private http: Http) { };
+        private http: Http) {}
 
     public getSummary(isbn: string): Observable<Book> {
         return this.http.request(new Request({
             method: RequestMethod.Get,
-            url: "/goodreads/search/index.xml",
+            url: '/goodreads/search/index.xml',
             search: `key=${this.config.goodreadsAPIKey}&q=${isbn}`
         })).switchMap((response: Response) => {
             return Observable.create((observer: Observer<Book>) => {
-                let xml = response.text();
+                const xml = response.text();
 
                 xml2js.parseString(xml, function (err, json) {
                     if (!err) {
-                        let books: Array<Book> = json.GoodreadsResponse.search[0].results[0].work.map((item) => {
+                        const books: Array<Book> = json.GoodreadsResponse.search[0].results[0].work.map((item) => {
                             return {
                                 isbn: isbn,
                                 title: item.best_book[0].title[0],
                                 author: item.best_book[0].author[0].name[0],
                                 rating: item.average_rating[0],
                                 cover: item.best_book[0].small_image_url[0]
-                            } as Book
+                            } as Book;
                         });
 
                         observer.next(books[0]);
@@ -52,19 +52,19 @@ export class GoodreadsService {
             search: `key=${this.config.goodreadsAPIKey}`
         })).switchMap((response: Response) => {
             return Observable.create((observer: Observer<Book>) => {
-                let xml = response.text();
+                const xml = response.text();
 
                 xml2js.parseString(xml, function (err, json) {
                     if (!err) {
-                        let book: Book = {
+                        const book: Book = {
                             isbn: isbn,
                             title: json.GoodreadsResponse.book[0].title[0],
                             description: json.GoodreadsResponse.book[0].description[0],
                             author: json.GoodreadsResponse.book[0].authors[0].author[0].name[0],
                             rating: json.GoodreadsResponse.book[0].average_rating[0],
                             cover: json.GoodreadsResponse.book[0].small_image_url[0]
-                        } as Book
-                        
+                        } as Book;
+
                         observer.next(book);
                         observer.complete();
                     } else {
@@ -82,11 +82,11 @@ export class GoodreadsService {
             search: `key=${this.config.goodreadsAPIKey}&id=${uid}&v=2&shelf=to-read`
         })).switchMap((response: Response) => {
             return Observable.create((observer: Observer<Array<Book>>) => {
-                let xml = response.text();
+                const xml = response.text();
 
                 xml2js.parseString(xml, function (err, json) {
                     if (!err) {
-                        let books: Array<Book> = json.GoodreadsResponse.reviews[0].review.map((item) => {
+                        const books: Array<Book> = json.GoodreadsResponse.reviews[0].review.map((item) => {
                             return {
                                 isbn: item.book[0].isbn12,
                                 title: item.book[0].title[0],
@@ -94,7 +94,7 @@ export class GoodreadsService {
                                 description: item.book[0].description[0],
                                 rating: item.book[0].average_rating[0],
                                 cover: item.book[0].image_url[0]
-                            } as Book
+                            } as Book;
                         });
 
                         observer.next(books);

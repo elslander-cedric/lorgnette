@@ -3,7 +3,7 @@ import { GoodreadsMockService } from '@oo/goodreads-mock.service';
 import { MaterialModule } from '@oo/material.module';
 import { ScannerRoutingModule } from './scanner-routing.module';
 import { RouterModule } from '@angular/router';
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BookDetailComponent } from './book-detail.component';
 import { BarcodeFinderComponent } from './barcode-finder.component';
 import { ScannerComponent } from './scanner.component';
@@ -21,11 +21,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         CommonModule,
         MaterialModule,
         FlexLayoutModule,
-        //NgbModule,
+        // NgbModule,
         ScannerRoutingModule
     ],
     exports: [],
-    providers: [        
+    providers: [
         {
             provide: GoodreadsService,
             useClass: isDevMode ? GoodreadsMockService : GoodreadsService

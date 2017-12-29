@@ -1,19 +1,34 @@
+dist: trusty
+
+addons:
+  chrome: stable
+
 language: node_js
+
 node_js:
-- node
+  - node
+
 branches:
   only:
   - master
   - gh-pages
   - "/.*/"
-before_script:
-- npm install -g @angular/cli
+
+install:
+  - npm install -g @angular/cli
+  - npm install -g karma
+  - npm install
+
 script:
-- npm run build-prod
+  - npm run lint
+  - npm run test-report  
+
 before_deploy:
+- npm run build-prod
 - cd dist
 - tar -czvf ../lorgnette-${TRAVIS_TAG}.tar.gz *
 - cd ..
+
 deploy:
    - provider: firebase
      token:

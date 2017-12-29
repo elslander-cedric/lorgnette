@@ -5,7 +5,7 @@ export class EbookFormatConverterService {
 
   constructor() { }
 
-  public convert() : void {
+  public convert(): void {
 
   }
 }

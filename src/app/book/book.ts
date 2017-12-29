@@ -22,21 +22,21 @@ export class Book {
         this._author = author;
     }
 
-    public get rating() : number {
+    public get rating(): number {
         return this._rating;
     }
 
-    public set rating(rating : number) {
+    public set rating(rating: number) {
         this._rating = rating;
     }
-    
+
     public get cover() {
         return this._cover;
     }
 
     public set cover(cover: string) {
         this._cover = cover;
-    }    
+    }
 
     public get isbn() {
         return this._isbn;

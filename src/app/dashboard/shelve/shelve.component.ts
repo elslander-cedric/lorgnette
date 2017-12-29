@@ -1,17 +1,17 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'lorgnette-shelve',
+  selector: 'oo-shelve',
   template: `
     <router-outlet></router-outlet>
   `,
   styles: [`
-    lorgnette-shelve {
+    oo-shelve {
         display: flex;
         flex: 1 1 auto;
     }
 
-    lorgnette-book-card-list {
+    oo-book-card-list {
         display: flex;
         flex: 1 1 auto;
     }

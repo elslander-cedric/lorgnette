@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lorgnette-footer-toolbar',
+  selector: 'oo-footer-toolbar',
   template: `
     <mat-toolbar [ngClass]="['footer']">
-      <!-- <mat-icon routerLink="['/scanner']" routerLinkActive="lorgnette-active" [ngClass]="'lorgnette-inactive'" svgIcon='lorgnette'></mat-icon> -->
+      <!-- <mat-icon routerLink="['/scanner']"
+        routerLinkActive="oo-active"
+        [ngClass]="'oo-inactive'" svgIcon='lorgnette'></mat-icon> -->
       <mat-icon routerLink="/scanner" svgIcon='lorgnette'></mat-icon>
-      <!-- <mat-icon routerLink="[/shelve, { outlets: { header: '[/header-search-toolbar]'}}]">local_library</mat-icon> -->
+      <!-- <mat-icon routerLink="[/shelve,
+        { outlets: { header: '[/header-search-toolbar]'}}]">local_library</mat-icon> -->
       <mat-icon routerLink="/shelve">local_library</mat-icon>
       <mat-icon routerLink="/login-oauth">person</mat-icon>
     </mat-toolbar>
@@ -19,15 +22,15 @@ import { Component, OnInit } from '@angular/core';
 
     mat-toolbar.footer * {
         display: flex;
-        flex: 1 1 auto;    
+        flex: 1 1 auto;
         justify-content: center;
     }
 
-    .lorgnette-inactive {
+    .oo-inactive {
         filter: grayscale(100%);
     }
 
-    .lorgnette-active {
+    .oo-active {
         filter: none;
     }
 

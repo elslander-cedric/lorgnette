@@ -19,12 +19,12 @@ export const routes: Routes = [
         path: '**',
         redirectTo: '/scanner',
         pathMatch: 'full'
-    }   
+    }
     */
 ];
 
 export function handleError(error: any) {
-    console.error(error)
+    console.error(error);
 }
 
 @NgModule({
@@ -40,8 +40,8 @@ export function handleError(error: any) {
     ],
     exports: [ RouterModule ],
     providers: [
-        SelectivePreloadingStrategy, 
-        { 
+        SelectivePreloadingStrategy,
+        {
             provide: LocationStrategy,
             useClass: HashLocationStrategy
         }

@@ -13,9 +13,12 @@
     "bundle": "gulp compress",
     "build": "ng build",
     "build-prod": "ng build --prod --aot",
-    "test": "ng test",
+    "test-live": "ng test",
+    "test-report": "ng test --no-watch --code-coverage",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "tag": "npm version patch && git push —tags origin master && npm publish"
   },
   "private": false,
   "dependencies": {
@@ -51,7 +54,9 @@
     "@types/jasmine": "~2.8.2",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^8.0.53",
+    "angular-cli-ghpages": "^0.5.2",
     "codelyzer": "~4.0.1",
+    "coveralls": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-gzip": "^1.4.0",
     "gulp-tar": "^2.0.0",
@@ -61,6 +66,7 @@
     "karma-chrome-launcher": "~2.2.0",
     "karma-cli": "~1.0.1",
     "karma-coverage-istanbul-reporter": "^1.2.1",
+    "karma-coveralls": "^1.1.2",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.2.0",

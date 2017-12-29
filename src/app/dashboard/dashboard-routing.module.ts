@@ -18,12 +18,12 @@ const routes: Routes = [
             {
                 path: '',
                 component: FooterToolbarComponent,
-                outlet: "footer"
+                outlet: 'footer'
             },
             {
                 path: '',
                 component: HeaderToolbarComponent,
-                outlet: "header"
+                outlet: 'header'
             },
             {
                 path: '',
@@ -57,7 +57,6 @@ const routes: Routes = [
                         pathMatch: 'full'
                     }
                 ]
-                
             }
         ]
     }

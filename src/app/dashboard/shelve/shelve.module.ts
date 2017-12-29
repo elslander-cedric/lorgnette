@@ -15,7 +15,7 @@ import { BookCardComponent } from './book-card.component';
 import { BookCardListComponent } from './book-card-list.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -28,15 +28,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         CommonModule,
         MaterialModule,
         FlexLayoutModule,
-        //NgbModule,
-        ShelveRoutingModule        
+        // NgbModule,
+        ShelveRoutingModule
     ],
     exports: [],
     providers: [
-        {            
+        {
             provide: GoodreadsService,
             useClass: environment.production ? GoodreadsMockService : GoodreadsService
         }
     ],
 })
-export class ShelveModule {}
+export class ShelveModule { }

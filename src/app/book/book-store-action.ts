@@ -1,15 +1,15 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
 import { Book } from './book';
 
-interface PayloadAction<T> extends Action {    
+interface PayloadAction<T> extends Action {
     payload: T;
 }
 
 export class BookStoreAction implements PayloadAction<Book> {
-    public static ADD_BOOK: string = 'ADD_BOOK';
-    public static REMOVE_BOOK: string = 'REMOVE_BOOK';
-    
+    public static ADD_BOOK = 'ADD_BOOK';
+    public static REMOVE_BOOK = 'REMOVE_BOOK';
+
     readonly type: string;
     readonly payload: Book;
 

@@ -3,30 +3,30 @@ import { BookStore } from '@oo/book/book-store';
 import { Book } from '@oo/book/book';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    EventEmitter,
-    HostBinding,
-    Input,
-    OnInit,
-    Output
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnInit,
+  Output
 } from '@angular/core';
 import { animate, AnimationTriggerMetadata, state, style, transition, trigger } from '@angular/animations';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
-  selector: 'lorgnette-book-card-list',
+  selector: 'oo-book-card-list',
   template: `
-    <div [ngClass]="'book-list'" *ngIf="books | async as books" 
+    <div [ngClass]="'book-list'" *ngIf="books | async as books"
       fxLayout="column" fxFlex="1 1 auto">
-      <lorgnette-book-card 
-        *ngFor="let book of books"    
+      <oo-book-card
+        *ngFor="let book of books"
         [book]="book"
         (remove)="removeBook($event)"
-        [book-card-selected]="(selectedBook | async) === book.isbn">
-      </lorgnette-book-card>
+        [ooBookCardSelected]="(selectedBook | async) === book.isbn">
+      </oo-book-card>
     </div>
   `,
   styles: [`
@@ -66,12 +66,12 @@ import { Observable } from 'rxjs/Rx';
   */
 })
 export class BookCardListComponent implements OnInit {
- 
+
   // @HostBinding('@routeAnimation') routeAnimation = true;
   // @HostBinding('style.display')   display = 'block';
   // @HostBinding('style.position')  position = 'absolute';
-  
-  //@Input() books: Array<Book>;
+
+  // @Input() books: Array<Book>;
   books: Observable<Array<Book>>;
 
   public selectedBook: Observable<string>;
@@ -79,19 +79,19 @@ export class BookCardListComponent implements OnInit {
   constructor(
     private changeDetector: ChangeDetectorRef,
     private store: Store<BookStore>,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.selectedBook = this.route.paramMap.map((paramMap: ParamMap) => 
+    this.selectedBook = this.route.paramMap.map((paramMap: ParamMap) =>
       paramMap.get('isbn'));
 
     this.books = this.route.data.map(data => data.books);
   }
 
-  private removeBook(book : Book) : void {    
+  private removeBook(book: Book): void {
     this.store.dispatch(
       new BookStoreAction(BookStoreAction.REMOVE_BOOK, book));
-      
+
     this.changeDetector.markForCheck();
   }
 }

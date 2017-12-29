@@ -3,19 +3,19 @@ import { AuthService } from '@oo/auth.service';
 import { Observable } from 'rxjs/Rx';
 import { ValidateFn } from 'codelyzer/walkerFactory/walkerFn';
 import {
-    FormBuilder,
-    FormControl,
-    FormGroup,
-    RequiredValidator,
-    ValidationErrors,
-    Validator,
-    ValidatorFn,
-    Validators,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  RequiredValidator,
+  ValidationErrors,
+  Validator,
+  ValidatorFn,
+  Validators,
 } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lorgnette-login',
+  selector: 'oo-login',
   template: `
     <div>
       <h2>Login</h2>
@@ -42,9 +42,7 @@ import { Component, OnInit } from '@angular/core';
       </form>
     </div>
   `,
-  styles: [`
-  
-  `]
+  styles: [``]
 })
 export class LoginComponent implements OnInit {
 
@@ -58,11 +56,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    this.usernameFormControl = new FormControl('', [ Validators.required ]);
+    this.usernameFormControl = new FormControl('', [Validators.required]);
 
-    let loginValidator: ValidatorFn = (formGroup: FormGroup) => { 
-      return null;//formGroup.get('password').value.match('@|=$') ? null : { 'complexity': true } as ValidationErrors;
-    }
+    const loginValidator: ValidatorFn = (formGroup: FormGroup) => {
+      return null; // formGroup.get('password').value.match('@|=$') ? null : { 'complexity': true } as ValidationErrors;
+    };
 
     this.loginForm = this.formBuilder.group({
       'username': this.usernameFormControl,
@@ -71,12 +69,9 @@ export class LoginComponent implements OnInit {
   }
 
   public login(): void {
-
     this.authService.login().subscribe(() => {
-
       if (this.authService.authenticated) {
-
-        let navigationExtras: NavigationExtras = {
+        const navigationExtras: NavigationExtras = {
           queryParamsHandling: 'preserve',
           preserveFragment: true
         };
@@ -90,5 +85,4 @@ export class LoginComponent implements OnInit {
   public logout() {
     this.authService.logout();
   }
-
 }

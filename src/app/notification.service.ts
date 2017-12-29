@@ -7,23 +7,23 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class NotificationService {
-  
-  private subscription : PushSubscription;
+
+  private subscription: PushSubscription;
 
   constructor(
     private http: Http,
     private swPush: SwPush,
-    private snackBar: MatSnackBar) {}
+    private snackBar: MatSnackBar) { }
 
-  public register() : void {
-    let options = {
-      serverPublicKey: //this.urlBase64ToUint8Array(
+  public register(): void {
+    const options = {
+      serverPublicKey: // this.urlBase64ToUint8Array(
         'BEbzsJrblsB9rF4Jx8SD-bO3768-w2t0Oa0vRZ5fqmhgiX6Mx8P5qjYMU5OBtq3fiWiane0trsDiNPFxfPUdhx8'
-      //)
+      // )
     };
 
     this.swPush.messages.subscribe((notification) => {
-      console.debug("received notification: ", notification);
+      console.log('received notification: ', notification);
 
       /*
       Notification.requestPermission((result) => {
@@ -54,30 +54,30 @@ export class NotificationService {
       .then(pushSubscription => {
         this.subscription = pushSubscription;
 
-        console.debug("Sending subscription ...");
-  
+        console.log('Sending subscription ...');
+
         this.http
-        .post('/subscribe', { subscription: pushSubscription })
-        .toPromise()
-        .then(() => {
-          this.snackBar.open('Now you are subscribed', null, {
-            duration: 2000
-          }); 
-        })
-        .catch(err => console.error(err));
+          .post('/subscribe', { subscription: pushSubscription })
+          .toPromise()
+          .then(() => {
+            this.snackBar.open('Now you are subscribed', null, {
+              duration: 2000
+            });
+          })
+          .catch(err => console.error(err));
       })
-      .catch( err => console.error(err));
+      .catch(err => console.error(err));
   }
 
-  private urlBase64ToUint8Array(base64String) : Uint8Array {
+  private urlBase64ToUint8Array(base64String): Uint8Array {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
     const base64 = (base64String + padding)
       .replace(/\-/g, '+')
       .replace(/_/g, '/');
-   
+
     const rawData = window.atob(base64);
     const outputArray = new Uint8Array(rawData.length);
-   
+
     for (let i = 0; i < rawData.length; ++i) {
       outputArray[i] = rawData.charCodeAt(i);
     }

@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
-        ProfileComponent        
+        ProfileComponent
     ],
     imports: [
         CommonModule,
@@ -20,4 +20,4 @@ import { CommonModule } from '@angular/common';
     exports: [],
     providers: [],
 })
-export class ProfileModule {}
+export class ProfileModule { }

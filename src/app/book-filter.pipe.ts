@@ -7,11 +7,10 @@ import { Book } from './book/book';
 })
 export class BookFilterPipe implements PipeTransform {
 
-  transform(books: Book[], queryString : string): Book[] {
+  transform(books: Book[], queryString: string): Book[] {
     return books.filter((book) => {
       return book.title.toLowerCase().match(queryString.toLowerCase()) ||
       book.author.toLowerCase().match(queryString.toLowerCase());
     });
   }
-
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lorgnette-header-toolbar',
+  selector: 'oo-header-toolbar',
   template: `
     <mat-toolbar [ngClass]="['header']">
       <span fxFlex>{{ title }}</span>
@@ -18,8 +18,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderToolbarComponent implements OnInit {
 
-  public title: string = 'Lorgnette'; 
-  
+  public title = 'Lorgnette';
+
   constructor() { }
 
   ngOnInit() {
