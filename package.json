@@ -1,5 +1,11 @@
 {
   "name": "@elslander-cedric/lorgnette",
+  "description": "Book Scanner",
+  "keywords": [
+    "book",
+    "scanner",
+    "goodreads"
+  ],
   "version": "1.0.0-alpha.2",
   "license": "MIT",
   "scripts": {
@@ -18,7 +24,7 @@
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "tag": "npm version patch && git push --tags origin master && npm publish"
+    "tag": "npm version patch && git push --tags origin master && npm publish --access public"
   },
   "private": false,
   "dependencies": {
