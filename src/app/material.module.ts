@@ -17,25 +17,26 @@ import {
   imports: [
     HttpClientModule,
     MatButtonModule,
-    MatIconModule,
     MatCardModule,
-    MatInputModule,
     MatFormFieldModule,
-    MatToolbarModule,
-    MatSnackBarModule,
     MatGridListModule,
-    MatProgressSpinnerModule
+    MatIconModule,
+    MatInputModule,    
+    MatProgressSpinnerModule,  
+    MatSnackBarModule,
+    MatToolbarModule,
   ],
   exports: [
     MatButtonModule,
-    MatIconModule,
+    MatButtonModule,
     MatCardModule,
-    MatInputModule,
     MatFormFieldModule,
-    MatToolbarModule,
-    MatSnackBarModule,
     MatGridListModule,
-    MatProgressSpinnerModule
+    MatIconModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatToolbarModule,
   ]
 })
 export class MaterialModule {}

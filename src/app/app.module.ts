@@ -20,6 +20,7 @@ import { MaterialModule } from './material.module';
 import { environment } from '../environments/environment';
 import { NotificationService } from '@oo/notification.service';
 import { LoginOauthComponent } from '@oo/login-oauth/login-oauth.component';
+import { WebSocketService } from '@oo/websocket.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { LoginOauthComponent } from '@oo/login-oauth/login-oauth.component';
         goodreadsAPIKey: 'w3qN6mPoYXHf70ctel9og',
         goodreadsUID: '58081960-cedric-elslander'
       } as Config
-    }
+    },
+    WebSocketService
   ],
   bootstrap: [AppComponent]
 })
