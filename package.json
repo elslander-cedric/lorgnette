@@ -1,6 +1,6 @@
 {
   "name": "@elslander-cedric/lorgnette",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
