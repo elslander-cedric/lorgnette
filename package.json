@@ -18,7 +18,7 @@
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "tag": "npm version patch && git push —tags origin master && npm publish"
+    "tag": "npm version patch && git push --tags origin master && npm publish"
   },
   "private": false,
   "dependencies": {
@@ -62,7 +62,7 @@
     "gulp-tar": "^2.0.0",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~1.7.0",
+    "karma": "~2.0.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-cli": "~1.0.1",
     "karma-coverage-istanbul-reporter": "^1.2.1",
@@ -70,7 +70,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.2.0",
-    "ts-node": "~3.3.0",
+    "ts-node": "^4.1.0",
     "tslint": "~5.8.0",
     "typescript": "~2.6.1"
   }
