@@ -1,0 +1,25 @@
+<mat-input-container floatPlaceholder="never" type="text">
+  <input mdInput
+    placeholder="Author or Title"
+    (input)="search($event.target.value)">
+</mat-input-container>
+
+<div ngClass='canvas'>
+  <mat-grid-list cols="3" rowHeight="1:1.7">
+    <mat-grid-tile *ngFor="let book of books | async">
+      <div ngClass='book'>
+        <mat-spinner [hidden]="!book.downloading" mode="indeterminate"></mat-spinner>
+        <img ngClass='cover' src="{{ book.cover }}" (click)="download(book)">
+        <!-- <ngb-rating [starTemplate]="t" max="5" readonly='true' [(rate)]="book.rating"></ngb-rating> -->
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<ng-template #t let-fill="fill">
+  <span *ngIf="fill === 100" class="star full">&#9733;</span>
+  <span *ngIf="fill === 0" class="star empty">&#9733;</span>
+  <span *ngIf="fill < 100 && fill > 0" class="star empty">
+    <span class="star partial" [style.width.%]="fill">&#9733;</span>&#9733;
+  </span>
+</ng-template>

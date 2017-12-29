@@ -1,0 +1,15 @@
+<mat-input-container type="text">
+  <input #query mdInput
+  placeholder="Author or Title">
+</mat-input-container>
+
+<div ngClass='canvas'>
+  <mat-grid-list cols="3" rowHeight="1:1.55">
+    <mat-grid-tile *ngFor="let book of books | bookFilter:query.value">
+        <img [ngClass]="['cover']" src="{{ book.cover }}">
+        <a href="{{ book.url_local }}" download="{{ book.title }}">
+          <img [ngClass]="['download']" src="img/ic_file_download_black_24px.svg" (click)="download(book)">
+        </a>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
