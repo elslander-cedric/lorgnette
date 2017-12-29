@@ -145,10 +145,10 @@ export class BookDetailComponent implements OnInit, AfterViewInit {
 
     if (this.description.scrollHeight > this.description.clientHeight) {
       console.log('need read more');
-      this.renderer.removeClass(this.readmore, 'hidden');
+      this._renderer.removeClass(this.readmore, 'hidden');
     } else {
       console.log('don\'t need read more');
-      this.renderer.addClass(this.readmore, 'hidden');
+      this._renderer.addClass(this.readmore, 'hidden');
     }
   }
 }

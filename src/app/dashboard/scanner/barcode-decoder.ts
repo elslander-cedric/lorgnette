@@ -59,7 +59,7 @@ export class BarcodeDecoder {
         this.canvas.width = media.width;
         this.canvas.height = media.height;
 
-        const barcode: string;
+        let barcode: string;
 
         this.context.drawImage(media, 0, 0);
 

@@ -5,7 +5,7 @@ import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@
 })
 export class BookCardSelectedDirective implements OnInit {
 
-    @Input() selected: any;
+    @Input('ooBookCardSelected') selected: any; // tslint:disable-line
 
     constructor(
         private element: ElementRef,
